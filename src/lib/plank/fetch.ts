@@ -1,4 +1,11 @@
-import type { Home, LegalPage, Navigation } from "@/types/index";
+import type {
+  Home,
+  LegalPage,
+  Navigation,
+  Product,
+  TrustedBy,
+  WhyPlank,
+} from "@/types/index";
 import plank from "./client";
 
 // TTL cache
@@ -51,6 +58,18 @@ export async function getFooterNav() {
 
 export async function getHome() {
   return await plank.single<Home>("home").find();
+}
+
+export async function getProduct() {
+  return await plank.single<Product>("product").find();
+}
+
+export async function getWhyPlank() {
+  return await plank.single<WhyPlank>("why-plank").find();
+}
+
+export async function getTrustedBy() {
+  return await plank.single<TrustedBy>("trusted-by").find();
 }
 
 export async function getPrivacy() {

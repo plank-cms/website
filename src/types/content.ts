@@ -18,6 +18,33 @@ export interface Home {
   updated_at: string;
 }
 
+export interface Product {
+  id: string;
+  status: string;
+  author: Author;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WhyPlank {
+  id: string;
+  status: string;
+  author: Author;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TrustedBy {
+  id: string;
+  status: string;
+  author: Author;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface LegalPage {
   id: string;
   content: string;

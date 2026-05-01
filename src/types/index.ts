@@ -7,6 +7,9 @@ export type { PlankListResponse, PlankParams } from "@plank-cms/client";
 export type {
   Author,
   Home,
+  Product,
+  WhyPlank,
+  TrustedBy,
   LegalPage,
   Navigation,
   NavigationItem,

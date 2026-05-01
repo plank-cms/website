@@ -7,6 +7,24 @@ export interface Author {
   country: string | null;
 }
 
+// Items
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+  items?: NavigationItem[];
+}
+
+export interface ArrayItem {
+  label?: string;
+  description?: string;
+}
+
+export interface TrustedByItem {
+  logo?: string;
+  label?: string;
+}
+
 // Single Types
 
 export interface Home {
@@ -20,6 +38,9 @@ export interface Home {
 
 export interface Product {
   id: string;
+  title?: string;
+  description?: string;
+  features?: ArrayItem[];
   status: string;
   author: Author;
   published_at: string;
@@ -29,6 +50,10 @@ export interface Product {
 
 export interface WhyPlank {
   id: string;
+  title?: string;
+  description?: string;
+  use_cases?: ArrayItem[];
+  target?: ArrayItem[];
   status: string;
   author: Author;
   published_at: string;
@@ -38,6 +63,7 @@ export interface WhyPlank {
 
 export interface TrustedBy {
   id: string;
+  clients?: TrustedByItem[];
   status: string;
   author: Author;
   published_at: string;
@@ -54,12 +80,6 @@ export interface LegalPage {
   published_at: string;
   created_at: string;
   updated_at: string;
-}
-
-export interface NavigationItem {
-  label: string;
-  href: string;
-  items?: NavigationItem[];
 }
 
 export interface Navigation {

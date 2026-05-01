@@ -1,0 +1,60 @@
+---
+import type { NavProps } from "@/types";
+import { Separator } from "@/components/ui/separator";
+import { ArrowUpRight } from "@lucide/astro";
+
+const year = new Date().getFullYear();
+
+const nav: NavProps[] = [
+  {
+    label: "Privacy",
+    href: "/privacy",
+  },
+  {
+    label: "Terms",
+    href: "/terms",
+  },
+];
+---
+
+<Separator />
+
+<footer class="max-w-7xl mx-auto w-full px-4 py-8">
+  <div
+    class="flex flex-col-reverse md:flex-row gap-4 md:items-center justify-between text-neutral-500 group-data-[variant=yellow]:text-black text-xs uppercase"
+  >
+    <p class="flex items-center space-x-2">
+      <span>&copy; {year} Plank CMS</span><a
+        href="http://am25.work"
+        target="_blank"
+        rel="noopener"
+        class="flex items-center hover:underline"
+      >
+        by AM25<ArrowUpRight size={16} class="shrink-0" />
+      </a>
+    </p>
+
+    <nav>
+      <ul class="flex items-center space-x-4">
+        {
+          nav.map((opt) => {
+            const isExternal = opt.href.startsWith("https");
+            return (
+              <li>
+                <a
+                  href={opt.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener" : undefined}
+                  class="flex items-center hover:underline"
+                >
+                  {opt.label}
+                  {isExternal && <ArrowUpRight size={16} class="shrink-0" />}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</footer>

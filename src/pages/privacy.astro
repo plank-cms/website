@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+
+import RootLayout from "@/layouts/RootLayout.astro";
+import GenericContent from "@/layouts/GenericContent.astro";
+import { ProseRenderer } from "@/components/ProseRenderer";
+import { getPrivacy } from "@/lib/plank/fetch";
+import { formatDate } from "@/lib/utils";
+
+const entry = await getPrivacy();
+const title = "Privacy Policy";
+---
+
+<RootLayout
+  title={`${title} - Plank CMS`}
+  description="A self-hosted headless CMS you can deploy in minutes"
+  image="https://plank-cms.com/og-image.png"
+  url="https://plank-cms.com/privacy"
+>
+  <GenericContent
+    title={title}
+    updated={formatDate(entry.date ?? entry.updated_at)}
+  >
+    <ProseRenderer content={entry.content} />
+  </GenericContent>
+</RootLayout>

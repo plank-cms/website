@@ -1,0 +1,62 @@
+---
+import type { NavProps } from "@/types";
+import MobileMenu from "@/components/MobileMenu.astro";
+import { ArrowUpRightIcon } from "@lucide/astro";
+
+const mainNav: NavProps[] = [
+  // {
+  //   label: "Home",
+  //   href: "/",
+  // },
+];
+---
+
+<header
+  class="bg-black group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
+>
+  <a href="/"
+    ><img
+      src="/plank-logo-w.svg"
+      alt="Plank CMS Logo"
+      width="32"
+      title="Plank CMS"
+      class="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+    /></a
+  >
+
+  <nav
+    aria-label="Main and social navigation (desktop)"
+    class="hidden md:block"
+  >
+    <ul class="flex items-center space-x-6">
+      {
+        mainNav.map((opt) => {
+          const isExternal = opt.href.startsWith("https");
+          return (
+            <li>
+              <a
+                href={opt.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener" : undefined}
+                class="flex items-center uppercase hover:underline"
+              >
+                {opt.label}
+                {isExternal && (
+                  <ArrowUpRightIcon
+                    size={20}
+                    class="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+                  />
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+
+  <div class="md:hidden">
+    <MobileMenu items={mainNav} />
+  </div>
+</header>
+<div class="pb-32"></div>

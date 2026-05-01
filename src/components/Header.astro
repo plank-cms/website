@@ -1,10 +1,23 @@
 ---
 import type { NavProps } from "@/types";
 import MobileMenu from "@/components/MobileMenu.astro";
-import { ArrowUpRightIcon } from "@lucide/astro";
+import { ArrowUpRightIcon, StarIcon } from "@lucide/astro";
 import { getMainNav } from "@/lib/plank/fetch";
+import { getGithubStars } from "@/lib/github";
+import { siGithub, siNpm } from "simple-icons";
+import BrandIcon from "./BrandIcon.astro";
 
 const mainNav: NavProps[] = await getMainNav();
+const githubStars = await getGithubStars();
+const githubRepo = import.meta.env.PUBLIC_GITHUB_REPO as string | undefined;
+const githubRepoUrl = githubRepo ? `https://github.com/${githubRepo}` : null;
+const starsLabel =
+  typeof githubStars === "number"
+    ? new Intl.NumberFormat("en", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+      }).format(githubStars)
+    : null;
 ---
 
 <header
@@ -51,8 +64,27 @@ const mainNav: NavProps[] = await getMainNav();
     </ul>
   </nav>
 
+  {
+    githubRepoUrl && starsLabel && (
+      <a
+        href={githubRepoUrl}
+        target="_blank"
+        rel="noopener"
+        class="hidden md:flex items-center gap-2 uppercase hover:underline"
+        aria-label={`GitHub stars: ${githubStars}`}
+      >
+        <BrandIcon icon={siGithub} size={20} />
+        <span>{starsLabel}</span>
+      </a>
+    )
+  }
+
   <div class="md:hidden">
-    <MobileMenu items={mainNav} />
+    <MobileMenu
+      items={mainNav}
+      githubRepoUrl={githubRepoUrl}
+      starsLabel={starsLabel}
+    />
   </div>
 </header>
 <div class="pb-32"></div>

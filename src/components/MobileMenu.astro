@@ -1,13 +1,16 @@
 ---
-import type { NavProps, SocNavProps } from "@/types";
-import BrandIcon from "@/components/BrandIcon.astro";
+import type { NavProps } from "@/types";
 import { Menu, X, ArrowUpRight } from "@lucide/astro";
+import { siGithub } from "simple-icons";
+import BrandIcon from "./BrandIcon.astro";
 
 interface Props {
   items: NavProps[];
+  githubRepoUrl?: string | null;
+  starsLabel?: string | null;
 }
 
-const { items } = Astro.props;
+const { items, githubRepoUrl = null, starsLabel = null } = Astro.props;
 ---
 
 <div class="relative" id="mobile-menu">
@@ -47,9 +50,24 @@ const { items } = Astro.props;
           );
         })
       }
+      <div class="my-1 h-px bg-border/50 -mx-1"></div>
+      {
+        githubRepoUrl && starsLabel && (
+          <li>
+            <a
+              href={githubRepoUrl}
+              target="_blank"
+              rel="noopener"
+              class="flex items-center gap-2 rounded-xl px-3 py-2 text-base uppercase hover:bg-accent hover:text-accent-foreground"
+              aria-label={`GitHub stars: ${starsLabel}`}
+            >
+              <BrandIcon icon={siGithub} size={18} />
+              <span>{starsLabel}</span>
+            </a>
+          </li>
+        )
+      }
     </ul>
-
-    <div class="my-1 h-px bg-border/50 -mx-1"></div>
   </div>
 </div>
 

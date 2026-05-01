@@ -2,13 +2,9 @@
 import type { NavProps } from "@/types";
 import MobileMenu from "@/components/MobileMenu.astro";
 import { ArrowUpRightIcon } from "@lucide/astro";
+import { getMainNav } from "@/lib/plank/fetch";
 
-const mainNav: NavProps[] = [
-  // {
-  //   label: "Home",
-  //   href: "/",
-  // },
-];
+const mainNav: NavProps[] = await getMainNav();
 ---
 
 <header

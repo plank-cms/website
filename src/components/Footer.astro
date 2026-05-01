@@ -2,19 +2,11 @@
 import type { NavProps } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight } from "@lucide/astro";
+import { getFooterNav } from "@/lib/plank/fetch";
 
 const year = new Date().getFullYear();
 
-const nav: NavProps[] = [
-  {
-    label: "Privacy",
-    href: "/privacy",
-  },
-  {
-    label: "Terms",
-    href: "/terms",
-  },
-];
+const nav: NavProps[] = await getFooterNav();
 ---
 
 <Separator />

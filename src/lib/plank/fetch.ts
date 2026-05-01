@@ -1,4 +1,4 @@
-import type { Home, LegalPage } from "@/types/index";
+import type { Home, LegalPage, Navigation } from "@/types/index";
 import plank from "./client";
 
 // TTL cache
@@ -23,8 +23,7 @@ const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
-const TTL_WORK = 4 * HOUR;
-const TTL_NOTES = 5 * MINUTE;
+const TTL_MISC = 6 * HOUR;
 
 type LocaleOptions = {
   locale?: string;
@@ -33,6 +32,22 @@ type LocaleOptions = {
 // Collections
 
 // Single Types
+
+async function getNavigation() {
+  return withCache("single:navigation", TTL_MISC, () =>
+    plank.single<Navigation>("navigation").find(),
+  );
+}
+
+export async function getMainNav() {
+  const navigation = await getNavigation();
+  return navigation.main_nav ?? [];
+}
+
+export async function getFooterNav() {
+  const navigation = await getNavigation();
+  return navigation.footer_nav ?? [];
+}
 
 export async function getHome() {
   return await plank.single<Home>("home").find();

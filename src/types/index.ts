@@ -4,7 +4,13 @@ import type { CustomIcon } from "@/icons/custom";
 export type BrandIconData = SimpleIcon | CustomIcon;
 
 export type { PlankListResponse, PlankParams } from "@plank-cms/client";
-export type { Author, Home, LegalPage } from "./content";
+export type {
+  Author,
+  Home,
+  LegalPage,
+  Navigation,
+  NavigationItem,
+} from "./content";
 
 export interface WorkCardProps {
   cover?: string | null;
@@ -51,11 +57,7 @@ export interface LogoTileProps {
   href?: string;
 }
 
-export interface NavProps {
-  label: string;
-  href: string;
-  icon?: string;
-}
+export type NavProps = import("./content").NavigationItem;
 
 export interface RootLayoutProps {
   title?: string;

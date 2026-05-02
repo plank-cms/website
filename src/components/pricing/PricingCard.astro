@@ -13,7 +13,7 @@ const { label, description, price, sufix = "" } = Astro.props as Props;
     <p class="text-muted-foreground">{description}</p>
   </div>
   <p slot="footer">
-    <span class="text-3xl">
+    <span class="text-4xl">
       {price}
       {typeof price === "number" ? " USD" : ""}
     </span>

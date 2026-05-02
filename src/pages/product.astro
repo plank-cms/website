@@ -20,11 +20,11 @@ const product = await getProduct();
     <div class="col-span-full">
       <div class="w-full flex flex-col justify-center gap-8">
         <h2
-          class="font-bold text-5xl md:text-7xl xl:text-8xl md:text-center uppercase"
+          class="font-bold text-6xl md:text-7xl xl:text-8xl md:text-center uppercase"
         >
           {product.title}
         </h2>
-        <div class="text-muted-foreground text-center max-w-4xl mx-auto">
+        <div class="text-muted-foreground md:text-center max-w-4xl mx-auto">
           <ProseRenderer content={product.description ?? ""} />
         </div>
       </div>
@@ -33,7 +33,7 @@ const product = await getProduct();
 
   <GridContainer gap="gap-0 mb-16">
     <div class="col-span-full text-center mb-8">
-      <h2 class="font-bold text-3xl uppercase">Main Features</h2>
+      <h2 class="font-bold text-3xl uppercase">Plank Features</h2>
     </div>
     {
       (product.features ?? []).map((feature, index) => (

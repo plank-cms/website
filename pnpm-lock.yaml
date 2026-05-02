@@ -14,12 +14,9 @@ importers:
       '@astrojs/react':
         specifier: 5.0.2
         version: 5.0.2(@types/node@25.5.2)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(jiti@2.6.1)(lightningcss@1.32.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@fontsource-variable/figtree':
-        specifier: 5.2.10
-        version: 5.2.10
-      '@fontsource/martian-mono':
-        specifier: 5.2.7
-        version: 5.2.7
+      '@fontsource/google-sans':
+        specifier: 5.2.1
+        version: 5.2.1
       '@itsmrtr/strapi-next-fetch':
         specifier: 1.1.0
         version: 1.1.0(next@16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
@@ -462,11 +459,8 @@ packages:
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
-  '@fontsource-variable/figtree@5.2.10':
-    resolution: {integrity: sha512-a5Gumbpy3mdd+Yg31g6Qb7CmjYbrfyutJa3bWfP5q8A4GclIOwX7mI+ZuSHsJnw/mHvW6r9oh1AHJcJTIxK4JA==}
-
-  '@fontsource/martian-mono@5.2.7':
-    resolution: {integrity: sha512-DU0WVmso0FjwnNf7Z80FhnrF/pCMgNi9ZfHTn1Ws7TM6u00CwV6esjaFkn3blnchn0pRwt63/M/2vfBe6J4mFg==}
+  '@fontsource/google-sans@5.2.1':
+    resolution: {integrity: sha512-FteXH18YS0288Bcrjefwyyp7hLwxd8yQBEcmjU/P0BED9c8n8kxwgna3gtMtYyFQx/wIkpyrzj8RaYQyl/4quw==}
 
   '@hono/node-server@1.19.12':
     resolution: {integrity: sha512-txsUW4SQ1iilgE0l9/e9VQWmELXifEFvmdA1j6WFh/aFPj99hIntrSsq/if0UWyGVkmrRPKA1wCeP+UCr1B9Uw==}
@@ -4351,9 +4345,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@fontsource-variable/figtree@5.2.10': {}
-
-  '@fontsource/martian-mono@5.2.7': {}
+  '@fontsource/google-sans@5.2.1': {}
 
   '@hono/node-server@1.19.12(hono@4.12.9)':
     dependencies:

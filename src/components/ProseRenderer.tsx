@@ -7,9 +7,9 @@ const components: NodeComponents = {
     const Tag = `h${level}` as "h1" | "h2" | "h3";
     const className =
       level === 1
-        ? "text-3xl uppercase pt-6"
+        ? "text-3xl uppercase pt-4"
         : level === 2
-          ? "text-2xl uppercase pt-6"
+          ? "text-2xl uppercase pt-4"
           : level === 3
             ? "text-xl uppercase pt-4"
             : undefined;
@@ -23,10 +23,7 @@ const components: NodeComponents = {
       className="inline-flex items-center hover:font-bold"
     >
       {children}
-      <ArrowUpRightIcon
-        size={20}
-        className="text-am-y shrink-0"
-      />
+      <ArrowUpRightIcon size={20} className="text-am-y shrink-0" />
     </a>
   ),
 };

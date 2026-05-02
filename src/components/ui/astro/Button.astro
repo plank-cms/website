@@ -36,15 +36,15 @@ const {
 
 const variantClasses: Record<Variant, string> = {
   default:
-    "bg-primary text-primary-foreground hover:bg-primary/80 group-data-[variant=yellow]:bg-black group-data-[variant=light]:bg-black group-data-[variant=yellow]:text-am-y group-data-[variant=light]:text-white group-data-[variant=yellow]:hover:bg-black/80 group-data-[variant=light]:hover:bg-black/80",
+    "bg-primary text-primary-foreground hover:bg-primary/80",
   outline:
-    "border-border bg-input/30 hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black group-data-[variant=yellow]:hover:text-black group-data-[variant=light]:hover:text-black",
+    "border-border bg-input/30 hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
   secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
   ghost:
-    "hover:bg-muted/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground group-data-[variant=light]:hover:bg-muted group-data-[variant=yellow]:hover:bg-muted",
+    "hover:bg-muted/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
   destructive:
-    "bg-destructive/20 text-destructive hover:bg-destructive/30 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 group-data-[variant=light]:bg-destructive/10 group-data-[variant=light]:hover:bg-destructive/20 group-data-[variant=yellow]:bg-destructive/10 group-data-[variant=yellow]:hover:bg-destructive/20",
-  link: "text-primary underline-offset-4 hover:underline group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black",
+    "bg-destructive/20 text-destructive hover:bg-destructive/30 focus-visible:border-destructive/40 focus-visible:ring-destructive/20",
+  link: "text-primary underline-offset-4 hover:underline",
 };
 
 const sizeClasses: Record<Size, string> = {

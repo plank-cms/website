@@ -15,12 +15,8 @@ export function AccordionWrap({ items }: Props) {
   return (
     <Accordion type="single" collapsible>
       {items.map((item, i) => (
-        <AccordionItem
-          key={i}
-          value={`item-${i}`}
-          className="group-data-[variant=yellow]:data-open:bg-muted/10 group-data-[variant=light]:data-open:bg-muted/10"
-        >
-          <AccordionTrigger className="group-data-[variant=yellow]:[&_svg]:text-black group-data-[variant=light]:[&_svg]:text-black">
+        <AccordionItem key={i} value={`item-${i}`}>
+          <AccordionTrigger>
             {item.label}
           </AccordionTrigger>
           <AccordionContent>

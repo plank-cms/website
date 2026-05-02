@@ -25,7 +25,7 @@ const components: NodeComponents = {
       {children}
       <ArrowUpRightIcon
         size={20}
-        className="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+        className="text-am-y shrink-0"
       />
     </a>
   ),

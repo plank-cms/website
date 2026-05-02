@@ -20,7 +20,7 @@ export function BannerPoweredBy({
       }`}
     >
       <p
-        className={`text-sm uppercase tracking-widest ${
+        className={`text-xs uppercase tracking-widest ${
           isDark ? "text-white" : "text-black"
         }`}
       >

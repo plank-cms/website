@@ -31,13 +31,6 @@ Use Node `>=22.12.0` and `pnpm`.
 - Keep route filenames concise and lowercase (e.g., `terms.astro`).
 - Reuse shared UI from `src/components/ui/` before adding new primitives.
 
-## Typography Rules
-
-- Global body font size must stay at `1.125rem` (18px) to keep the baseline readable with Google Sans.
-- Never use `text-xs` or `text-base`.
-- Prefer `text-lg` as the minimum baseline text utility when a utility class is needed.
-- If using upstream/original shadcn components (instead of our custom wrappers) and they include internal `text-base`, pass a class override with `text-lg` to keep typography consistent.
-
 ## Testing Guidelines
 
 There is no dedicated automated test suite configured yet in `package.json`.

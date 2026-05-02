@@ -98,9 +98,7 @@
   }
   html {
     @apply font-google-sans;
-  }
-  body {
-    font-size: 1.125rem;
+    font-size: 18px;
   }
   code {
     font-family: inherit;

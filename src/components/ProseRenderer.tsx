@@ -20,7 +20,7 @@ const components: NodeComponents = {
       href={href}
       target={target ?? undefined}
       rel={rel ?? undefined}
-      className="inline-flex items-center hover:font-bold"
+      className="inline-flex items-center hover:underline!"
     >
       {children}
       <ArrowUpRightIcon size={20} className="text-am-y shrink-0" />

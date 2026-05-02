@@ -1,0 +1,22 @@
+---
+import Card from "@/components/ui/astro/Card.astro";
+import type { PricingCardProp } from "@/types";
+
+type Props = PricingCardProp;
+
+const { label, description, price, sufix = "" } = Astro.props as Props;
+---
+
+<Card class="bg-black h-54 justify-between">
+  <div slot="content">
+    <h3 class="text-lg font-bold uppercase mb-2">{label}</h3>
+    <p class="text-muted-foreground">{description}</p>
+  </div>
+  <p slot="footer">
+    <span class="text-3xl">
+      {price}
+      {typeof price === "number" ? " USD" : ""}
+    </span>
+    <span class="text-muted-foreground">{sufix}</span>
+  </p>
+</Card>

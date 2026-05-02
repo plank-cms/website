@@ -1,0 +1,84 @@
+---
+import type { PricingRow, PricingValue } from "@/types";
+import { CheckIcon, MinusIcon } from "@lucide/astro";
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@/components/ui/table";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridSix from "@/layouts/grids/GridSix.astro";
+
+interface Props {
+  header: string;
+  rows: PricingRow[];
+}
+
+const { header, rows } = Astro.props as Props;
+
+function formatValue(value: PricingValue) {
+  if (value.kind === "boolean") return value.value;
+  return String(value.value);
+}
+---
+
+<GridContainer class="mb-16">
+  <div class="col-span-1"></div>
+
+  <GridSix>
+    <div class="col-span-full">
+      <Table className="md:table-fixed">
+        <TableHeader>
+          <TableRow className="hover:bg-transparent">
+            <TableHead
+              className="w-1/2 text-muted-foreground font-bold uppercase"
+              >{header}</TableHead
+            >
+            <TableHead
+              className="w-1/4 text-muted-foreground font-bold uppercase"
+              >Free</TableHead
+            >
+            <TableHead
+              className="w-1/4 text-muted-foreground font-bold uppercase"
+              >Growth</TableHead
+            >
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {
+            rows.map((row) => (
+              <TableRow>
+                <TableCell className="w-1/2">{row.label}</TableCell>
+                <TableCell className="w-1/4">
+                  {typeof formatValue(row.free) === "boolean" ? (
+                    formatValue(row.free) ? (
+                      <CheckIcon class="size-4" />
+                    ) : (
+                      <MinusIcon class="size-4" />
+                    )
+                  ) : (
+                    formatValue(row.free)
+                  )}
+                </TableCell>
+                <TableCell className="w-1/4">
+                  {typeof formatValue(row.growth) === "boolean" ? (
+                    formatValue(row.growth) ? (
+                      <CheckIcon class="size-4" />
+                    ) : (
+                      <MinusIcon class="size-4" />
+                    )
+                  ) : (
+                    formatValue(row.growth)
+                  )}
+                </TableCell>
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </Table>
+    </div>
+  </GridSix>
+</GridContainer>

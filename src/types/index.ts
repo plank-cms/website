@@ -11,6 +11,9 @@ export type {
   WhyPlank,
   TrustedBy,
   LegalPage,
+  Pricing,
+  PricingRow,
+  PricingValue,
   Navigation,
   NavigationItem,
 } from "./content";
@@ -19,6 +22,13 @@ export interface FeatureCardProp {
   number: string;
   label: string;
   description: string;
+}
+
+export interface PricingCardProp {
+  label: string;
+  description: string;
+  price: string | number;
+  sufix?: string;
 }
 
 export interface AccordionWrapItem {

@@ -25,6 +25,30 @@ export interface TrustedByItem {
   label?: string;
 }
 
+export type PricingValue =
+  | {
+      kind: "boolean";
+      value: boolean;
+    }
+  | {
+      kind: "number";
+      value: number;
+    }
+  | {
+      kind: "string";
+      value: string;
+    };
+
+export type PricingPriceValue =
+  | {
+      kind: "number";
+      value: number;
+    }
+  | {
+      kind: "string";
+      value: string;
+    };
+
 // Single Types
 
 export interface Home {
@@ -75,6 +99,31 @@ export interface LegalPage {
   id: string;
   content: string;
   date?: string;
+  status: string;
+  author: Author;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PricingTier {
+  label: string;
+  description: string;
+  price: PricingPriceValue;
+  sufix?: string;
+}
+
+export interface PricingRow {
+  label: string;
+  free: PricingValue;
+  growth: PricingValue;
+}
+
+export interface Pricing {
+  id: string;
+  tiers: PricingTier[];
+  users: PricingRow[];
+  features: PricingRow[];
   status: string;
   author: Author;
   published_at: string;

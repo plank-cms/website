@@ -2,6 +2,13 @@
 export const prerender = true;
 
 import RootLayout from "@/layouts/RootLayout.astro";
+import PricingTable from "@/components/pricing/PricingTable.astro";
+import { getPricing } from "@/lib/plank/fetch";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridSix from "@/layouts/grids/GridSix.astro";
+import PricingCard from "@/components/pricing/PricingCard.astro";
+
+const pricing = await getPricing();
 ---
 
 <RootLayout
@@ -9,4 +16,32 @@ import RootLayout from "@/layouts/RootLayout.astro";
   description="A self-hosted headless CMS you can deploy in minutes"
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com/pricing"
-/>
+>
+  <GridContainer class="mb-16">
+    <div class="col-span-1"></div>
+    <GridSix>
+      <div class="col-span-full mb-8">
+        <h1 class="sr-only">Pricing</h1>
+        <h2 class="text-5xl md:text-center font-bold uppercase">
+          Plans thath scale with you
+        </h2>
+      </div>
+
+      {
+        (pricing.tiers ?? []).map((tier) => (
+          <div class="col-span-3">
+            <PricingCard
+              label={tier.label}
+              description={tier.description}
+              price={tier.price.value}
+              sufix={tier.sufix ?? ""}
+            />
+          </div>
+        ))
+      }
+    </GridSix>
+  </GridContainer>
+
+  <PricingTable header="Features" rows={pricing.features ?? []} />
+  <PricingTable header="Users" rows={pricing.users ?? []} />
+</RootLayout>

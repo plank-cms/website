@@ -2,6 +2,7 @@ import type {
   Home,
   LegalPage,
   Navigation,
+  Pricing,
   Product,
   TrustedBy,
   WhyPlank,
@@ -78,4 +79,8 @@ export async function getPrivacy() {
 
 export async function getTerms() {
   return await plank.single<LegalPage>("terms").find();
+}
+
+export async function getPricing() {
+  return await plank.single<Pricing>("pricing").find();
 }

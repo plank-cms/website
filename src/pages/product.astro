@@ -15,12 +15,12 @@ const product = await getProduct();
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com/product"
 >
-  <GridContainer>
+  <GridContainer gap="gap-0">
     {
       (product.features ?? []).map((feature, index) => (
         <div class="col-span-2">
           <FeatureCard
-            number={index + 1}
+            number={String(index + 1).padStart(2, "0")}
             label={feature.label ?? ""}
             description={feature.description ?? ""}
           />

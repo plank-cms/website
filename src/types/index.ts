@@ -16,7 +16,7 @@ export type {
 } from "./content";
 
 export interface FeatureCardProp {
-  number: number;
+  number: string;
   label: string;
   description: string;
 }

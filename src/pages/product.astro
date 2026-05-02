@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import FeatureCard from "@/components/product/FeatureCard.astro";
+import { ProseRenderer } from "@/components/ProseRenderer";
 import GridContainer from "@/layouts/GridContainer.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getProduct } from "@/lib/plank/fetch";
@@ -15,7 +16,25 @@ const product = await getProduct();
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com/product"
 >
+  <GridContainer class="items-center min-h-dvh -mt-32">
+    <div class="col-span-full">
+      <div class="w-full flex flex-col justify-center gap-8">
+        <h2
+          class="font-bold text-5xl md:text-7xl xl:text-8xl md:text-center uppercase"
+        >
+          {product.title}
+        </h2>
+        <div class="text-muted-foreground text-center max-w-4xl mx-auto">
+          <ProseRenderer content={product.description ?? ""} />
+        </div>
+      </div>
+    </div>
+  </GridContainer>
+
   <GridContainer gap="gap-0">
+    <div class="col-span-full text-center mb-8">
+      <h2 class="font-bold text-3xl uppercase">Main Features</h2>
+    </div>
     {
       (product.features ?? []).map((feature, index) => (
         <div class="col-span-2">

@@ -11,14 +11,7 @@ const {
   description,
   image,
   url,
-  variant = "default",
 } = Astro.props;
-
-const variantClasses = {
-  default: "bg-black text-white",
-  yellow: "bg-am-y text-black",
-  light: "bg-white text-black",
-};
 ---
 
 <html lang="en">
@@ -49,10 +42,7 @@ const variantClasses = {
     <meta name="twitter:image" content={image} />
   </head>
 
-  <body
-    class={`${variantClasses[variant]} font-google-sans min-h-dvh flex flex-col group`}
-    data-variant={variant}
-  >
+  <body class="bg-black text-white font-google-sans min-h-dvh flex flex-col group">
     <Header />
 
     <main class="max-w-7xl mx-auto w-full flex-1">

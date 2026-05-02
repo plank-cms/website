@@ -44,11 +44,6 @@ body {
   stroke: var(--color-am-y);
 }
 
-[data-variant="yellow"] .link-icon,
-[data-variant="light"] .link-icon {
-  stroke: black;
-}
-
 /* Disable shadows */
 @layer utilities {
   [class*="shadow"] {

@@ -55,5 +55,4 @@ export interface RootLayoutProps {
   description?: string;
   image?: string;
   url?: string;
-  variant?: "default" | "yellow" | "light";
 }

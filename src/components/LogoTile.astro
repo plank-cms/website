@@ -16,19 +16,13 @@ const isExternal = href?.startsWith("https");
   {title}
   class="group/tile"
 >
-  <Card
-    class="flex justify-center aspect-square"
-  >
+  <Card class="flex justify-center aspect-square">
     <div slot="content">
-      <img
-        src={logo}
-        alt={title}
-        class="w-full p-4"
-      />
+      <img src={logo} alt={title} class="w-full p-4" />
     </div>
   </Card>
   <p
-    class="text-muted-foreground text-xs text-center mt-2 group-hover/tile:underline"
+    class="text-muted-foreground text-sm text-center mt-2 group-hover/tile:underline"
   >
     {title}
   </p>

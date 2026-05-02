@@ -34,7 +34,9 @@ const isSquare = shape === "square";
     full
       ? "w-full aspect-square"
       : "size-8 data-[size=lg]:size-10 data-[size=sm]:size-6",
-    isSquare ? "rounded-none after:rounded-none" : "rounded-full after:rounded-full",
+    isSquare
+      ? "rounded-none after:rounded-none"
+      : "rounded-full after:rounded-full",
     className,
   )}
   {...props}
@@ -57,7 +59,7 @@ const isSquare = shape === "square";
     data-slot="avatar-fallback"
     data-avatar-fallback
     class={cn(
-      "flex size-full items-center justify-center bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
+      "flex size-full items-center justify-center bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-sm",
       isSquare ? "rounded-none" : "rounded-full",
       src && "hidden",
     )}

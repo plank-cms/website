@@ -39,7 +39,7 @@ const { items, githubRepoUrl = null, starsLabel = null } = Astro.props;
                 href={opt.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener" : undefined}
-                class="flex items-center gap-2 rounded-xl px-3 py-2 text-base uppercase hover:bg-accent hover:text-accent-foreground"
+                class="flex items-center gap-2 rounded-xl px-3 py-2 uppercase hover:bg-accent hover:text-accent-foreground"
               >
                 {opt.label}
                 {isExternal && (
@@ -58,7 +58,7 @@ const { items, githubRepoUrl = null, starsLabel = null } = Astro.props;
               href={githubRepoUrl}
               target="_blank"
               rel="noopener"
-              class="flex items-center gap-2 rounded-xl px-3 py-2 text-base uppercase hover:bg-accent hover:text-accent-foreground"
+              class="flex items-center gap-2 rounded-xl px-3 py-2 uppercase hover:bg-accent hover:text-accent-foreground"
               aria-label={`GitHub stars: ${starsLabel}`}
             >
               <BrandIcon icon={siGithub} size={18} />

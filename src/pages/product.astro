@@ -1,7 +1,12 @@
 ---
 export const prerender = true;
 
+import FeatureCard from "@/components/product/FeatureCard.astro";
+import GridContainer from "@/layouts/GridContainer.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
+import { getProduct } from "@/lib/plank/fetch";
+
+const product = await getProduct();
 ---
 
 <RootLayout
@@ -9,4 +14,18 @@ import RootLayout from "@/layouts/RootLayout.astro";
   description="A self-hosted headless CMS you can deploy in minutes"
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com/product"
-/>
+>
+  <GridContainer>
+    {
+      (product.features ?? []).map((feature, index) => (
+        <div class="col-span-2">
+          <FeatureCard
+            number={index + 1}
+            label={feature.label ?? ""}
+            description={feature.description ?? ""}
+          />
+        </div>
+      ))
+    }
+  </GridContainer>
+</RootLayout>

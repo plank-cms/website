@@ -15,22 +15,10 @@ export type {
   NavigationItem,
 } from "./content";
 
-export interface WorkCardProps {
-  cover?: string | null;
-  title: string;
-  href: string;
-  category: string;
-  publishedAt?: string;
-}
-
-import type { Author } from "./content";
-
-export interface NoteCardProps {
-  title: string;
-  href: string;
-  category: string;
-  publishedAt?: string;
-  author?: Author | null;
+export interface FeatureCardProp {
+  number: number;
+  label: string;
+  description: string;
 }
 
 export interface AccordionWrapItem {

@@ -1,0 +1,18 @@
+---
+import Card from "@/components/ui/astro/Card.astro";
+import type { FeatureCardProp } from "@/types";
+
+type Props = FeatureCardProp;
+
+const { number, label, description } = Astro.props;
+---
+
+<Card
+  class="aspect-square h-full justify-between group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black"
+>
+  <div slot="content">
+    <p class="mb-2">{number}</p>
+    <h3 class="text-3xl font-bold uppercase">{label}</h3>
+  </div>
+  <p slot="footer" class="text-xs text-left">{description}</p>
+</Card>

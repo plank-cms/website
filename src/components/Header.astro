@@ -49,12 +49,7 @@ const starsLabel =
                 class="flex items-center uppercase hover:underline"
               >
                 {opt.label}
-                {isExternal && (
-                  <ArrowUpRightIcon
-                    size={20}
-                    class="text-am-y shrink-0"
-                  />
-                )}
+                {isExternal && <ArrowUpRightIcon size={20} class="shrink-0" />}
               </a>
             </li>
           );
@@ -63,20 +58,27 @@ const starsLabel =
     </ul>
   </nav>
 
-  {
-    githubRepoUrl && starsLabel && (
-      <a
-        href={githubRepoUrl}
-        target="_blank"
-        rel="noopener"
-        class="hidden md:flex items-center gap-2 uppercase hover:underline"
-        aria-label={`GitHub stars: ${githubStars}`}
-      >
-        <BrandIcon icon={siGithub} size={20} />
-        <span>{starsLabel}</span>
-      </a>
-    )
-  }
+  <div class="flex items-center gap-4">
+    {
+      githubRepoUrl && starsLabel && (
+        <a
+          href={githubRepoUrl}
+          target="_blank"
+          rel="noopener"
+          class="hidden md:flex items-center gap-2 uppercase hover:underline"
+          aria-label={`GitHub stars: ${githubStars}`}
+        >
+          <BrandIcon icon={siGithub} size={20} />
+          <span>{starsLabel}</span>
+        </a>
+      )
+    }
+    <a
+      href="/start"
+      class="bg-white text-black text-sm uppercase px-3 py-0.5 rounded-full border border-white hover:bg-transparent hover:text-white"
+      >Get Started</a
+    >
+  </div>
 
   <div class="md:hidden">
     <MobileMenu

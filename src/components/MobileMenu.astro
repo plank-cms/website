@@ -34,31 +34,32 @@ const { items, githubRepoUrl = null, starsLabel = null } = Astro.props;
         items.map((opt) => {
           const isExternal = opt.href.startsWith("https");
           return (
-            <li>
+            <li class="px-3 py-2 uppercase">
               <a
                 href={opt.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener" : undefined}
-                class="flex items-center gap-2 rounded-xl px-3 py-2 uppercase hover:bg-accent hover:text-accent-foreground"
+                class="flex items-center gap-2"
               >
                 {opt.label}
-                {isExternal && (
-                  <ArrowUpRight size={20} class="text-am-y shrink-0" />
-                )}
+                {isExternal && <ArrowUpRight size={20} class="shrink-0" />}
               </a>
             </li>
           );
         })
       }
+      <li class="bg-white text-black px-3 py-2 uppercase">
+        <a href="/start">Get Started</a>
+      </li>
       <div class="my-1 h-px bg-border/50 -mx-1"></div>
       {
         githubRepoUrl && starsLabel && (
-          <li>
+          <li class="px-3 py-1">
             <a
               href={githubRepoUrl}
               target="_blank"
               rel="noopener"
-              class="flex items-center gap-2 rounded-xl px-3 py-2 uppercase hover:bg-accent hover:text-accent-foreground"
+              class="flex items-center gap-2"
               aria-label={`GitHub stars: ${starsLabel}`}
             >
               <BrandIcon icon={siGithub} size={18} />

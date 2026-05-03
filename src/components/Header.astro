@@ -20,72 +20,79 @@ const starsLabel =
     : null;
 ---
 
-<header
-  class="bg-black fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
->
-  <a href="/"
-    ><img
-      src="/plank-logo-w.svg"
-      alt="Plank CMS Logo"
-      width="32"
-      title="Plank CMS"
-    /></a
+<header class="bg-black fixed top-0 left-0 right-0 z-50 w-full p-4">
+  <div
+    class="max-w-7xl mx-auto w-full grid grid-cols-2 md:grid-cols-3 items-center"
   >
+    <div class="col-span-1">
+      <a href="/"
+        ><img
+          src="/plank-logo-w.svg"
+          alt="Plank CMS Logo"
+          width="32"
+          title="Plank CMS"
+        /></a
+      >
+    </div>
 
-  <nav
-    aria-label="Main and social navigation (desktop)"
-    class="hidden md:block"
-  >
-    <ul class="flex items-center space-x-6">
-      {
-        mainNav.map((opt) => {
-          const isExternal = opt.href.startsWith("https");
-          return (
-            <li>
-              <a
-                href={opt.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener" : undefined}
-                class="flex items-center uppercase hover:underline"
-              >
-                {opt.label}
-                {isExternal && <ArrowUpRightIcon size={20} class="shrink-0" />}
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </nav>
+    <div class="col-span-1 hidden md:flex md:justify-center">
+      <nav aria-label="Main and social navigation (desktop)">
+        <ul class="flex items-center space-x-6">
+          {
+            mainNav.map((opt) => {
+              const isExternal = opt.href.startsWith("https");
+              return (
+                <li>
+                  <a
+                    href={opt.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener" : undefined}
+                    class="flex items-center uppercase hover:underline"
+                  >
+                    {opt.label}
+                    {isExternal && (
+                      <ArrowUpRightIcon size={20} class="shrink-0" />
+                    )}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+    </div>
 
-  <div class="flex items-center gap-4">
-    {
-      githubRepoUrl && starsLabel && (
+    <div class="col-span-1 hidden md:flex md:justify-end">
+      <div class="flex items-center gap-4">
+        {
+          githubRepoUrl && starsLabel && (
+            <a
+              href={githubRepoUrl}
+              target="_blank"
+              rel="noopener"
+              class="flex items-center gap-2 uppercase hover:underline"
+              aria-label={`GitHub stars: ${githubStars}`}
+            >
+              <BrandIcon icon={siGithub} size={20} />
+              <span>{starsLabel}</span>
+            </a>
+          )
+        }
         <a
-          href={githubRepoUrl}
-          target="_blank"
-          rel="noopener"
-          class="hidden md:flex items-center gap-2 uppercase hover:underline"
-          aria-label={`GitHub stars: ${githubStars}`}
+          href="/start"
+          class="bg-white text-black text-sm uppercase px-3 py-0.5 rounded-full border border-white hover:bg-transparent hover:text-white"
+          >Get Started</a
         >
-          <BrandIcon icon={siGithub} size={20} />
-          <span>{starsLabel}</span>
-        </a>
-      )
-    }
-    <a
-      href="/start"
-      class="bg-white text-black text-sm uppercase px-3 py-0.5 rounded-full border border-white hover:bg-transparent hover:text-white"
-      >Get Started</a
-    >
-  </div>
+      </div>
+    </div>
 
-  <div class="md:hidden">
-    <MobileMenu
-      items={mainNav}
-      githubRepoUrl={githubRepoUrl}
-      starsLabel={starsLabel}
-    />
+    <div class="col-span-1 md:hidden flex justify-end">
+      <MobileMenu
+        items={mainNav}
+        githubRepoUrl={githubRepoUrl}
+        starsLabel={starsLabel}
+      />
+    </div>
   </div>
 </header>
 <div class="pb-32"></div>

@@ -1,8 +1,12 @@
 ---
 export const prerender = true;
 
+import { ProseRenderer } from "@/components/ProseRenderer";
+import GridContainer from "@/layouts/GridContainer.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
+import { getWhyPlank } from "@/lib/plank/fetch";
 
+const why = await getWhyPlank();
 const title = "Why Plank";
 ---
 
@@ -13,4 +17,18 @@ const title = "Why Plank";
   url="https://plank-cms.com/why"
 >
   <h1 class="sr-only">{title}</h1>
+  <GridContainer class="items-center min-h-dvh -mt-32">
+    <div class="col-span-full">
+      <div class="w-full flex flex-col justify-center gap-8">
+        <h2
+          class="font-bold text-6xl md:text-7xl xl:text-8xl md:text-center uppercase"
+        >
+          {why.title}
+        </h2>
+        <div class="text-muted-foreground md:text-center max-w-4xl mx-auto">
+          <ProseRenderer content={why.description ?? ""} />
+        </div>
+      </div>
+    </div>
+  </GridContainer>
 </RootLayout>

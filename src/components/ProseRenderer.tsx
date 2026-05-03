@@ -23,7 +23,7 @@ const components: NodeComponents = {
       className="inline-flex items-center hover:underline!"
     >
       {children}
-      <ArrowUpRightIcon size={20} className="text-am-y shrink-0" />
+      <ArrowUpRightIcon size={20} className="shrink-0" />
     </a>
   ),
 };

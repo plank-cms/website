@@ -19,13 +19,13 @@ const title = "Why Plank";
   <h1 class="sr-only">{title}</h1>
   <GridContainer class="md:items-center min-h-dvh mt-4 md:-mt-32">
     <div class="col-span-full">
-      <div class="w-full flex flex-col justify-center gap-8">
+      <div class="w-full flex flex-col justify-center gap-8 max-w-4xl mx-auto">
         <h2
           class="font-bold text-6xl md:text-7xl xl:text-8xl md:text-center uppercase"
         >
           {why.title}
         </h2>
-        <div class="text-muted-foreground md:text-center max-w-4xl mx-auto">
+        <div class="text-muted-foreground md:text-center">
           <ProseRenderer content={why.description ?? ""} />
         </div>
       </div>

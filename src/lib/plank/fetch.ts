@@ -6,6 +6,7 @@ import type {
   Product,
   TrustedBy,
   WhyPlank,
+  GetStarted,
 } from "@/types/index";
 import plank from "./client";
 
@@ -83,4 +84,8 @@ export async function getTerms() {
 
 export async function getPricing() {
   return await plank.single<Pricing>("pricing").find();
+}
+
+export async function getStarted() {
+  return await plank.single<GetStarted>("get-started").find();
 }

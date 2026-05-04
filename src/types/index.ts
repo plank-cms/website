@@ -16,6 +16,7 @@ export type {
   PricingValue,
   Navigation,
   NavigationItem,
+  GetStarted,
 } from "./content";
 
 export interface FeatureCardProp {

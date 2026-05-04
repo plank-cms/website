@@ -18,6 +18,7 @@ export interface NavigationItem {
 export interface ArrayItem {
   label?: string;
   description?: string;
+  href?: string;
 }
 
 export interface TrustedByItem {
@@ -138,6 +139,19 @@ export interface Navigation {
   main_nav?: NavigationItem[];
   footer_nav?: NavigationItem[];
   status: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface GetStarted {
+  id: string;
+  title?: string;
+  description?: string;
+  command?: string;
+  cta?: ArrayItem[];
+  status: string;
+  author: Author;
   published_at: string;
   created_at: string;
   updated_at: string;

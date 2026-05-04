@@ -1,8 +1,13 @@
 ---
 export const prerender = true;
 
+import { ProseRenderer } from "@/components/ProseRenderer";
+import GridContainer from "@/layouts/GridContainer.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
+import { getStarted } from "@/lib/plank/fetch";
+import { CheckIcon, CopyIcon } from "@lucide/astro";
 
+const started = await getStarted();
 const title = "Get started";
 ---
 
@@ -13,4 +18,85 @@ const title = "Get started";
   url="https://plank-cms.com/start"
 >
   <h1 class="sr-only">{title}</h1>
+  <GridContainer class="md:items-center min-h-dvh mt-4 md:-mt-32">
+    <div class="col-span-full">
+      <div
+        class="w-full flex flex-col items-center justify-center gap-8 max-w-4xl mx-auto"
+      >
+        <h2
+          class="font-bold text-6xl md:text-7xl xl:text-8xl md:text-center uppercase"
+        >
+          {started.title}
+        </h2>
+        <div class="text-muted-foreground md:text-center">
+          <ProseRenderer content={started.description ?? ""} />
+        </div>
+
+        <div
+          id="copy-command"
+          class="bg-neutral-700 text-center w-fit px-6 py-3 rounded-full cursor-pointer select-none"
+          role="button"
+          tabindex="0"
+          aria-label="Copy command to clipboard"
+          data-command={started.command}
+        >
+          <p class="text-sm md:text-base font-mono flex items-center gap-2">
+            <span>{started.command}</span>
+            <span id="copy-icon" aria-hidden="true">
+              <CopyIcon size={16} />
+            </span>
+            <span
+              id="copied-icon"
+              aria-hidden="true"
+              class="hidden text-green-400"
+            >
+              <CheckIcon size={16} />
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </GridContainer>
 </RootLayout>
+
+<script>
+  const copyContainer = document.getElementById("copy-command");
+  const copyIcon = document.getElementById("copy-icon");
+  const copiedIcon = document.getElementById("copied-icon");
+  let copyTimeout = 0;
+
+  const showCopiedState = () => {
+    const copyIconEl = copyIcon;
+    const copiedIconEl = copiedIcon;
+    if (!copyIconEl || !copiedIconEl) return;
+    copyIconEl.classList.add("hidden");
+    copiedIconEl.classList.remove("hidden");
+    clearTimeout(copyTimeout);
+    copyTimeout = window.setTimeout(() => {
+      copiedIconEl.classList.add("hidden");
+      copyIconEl.classList.remove("hidden");
+    }, 2000);
+  };
+
+  const handleCopy = async () => {
+    if (!copyContainer) return;
+    const command = copyContainer.getAttribute("data-command");
+    if (!command) return;
+    try {
+      await navigator.clipboard.writeText(command);
+      showCopiedState();
+    } catch {
+      // Ignore clipboard errors silently.
+    }
+  };
+
+  if (copyContainer) {
+    copyContainer.addEventListener("click", handleCopy);
+    copyContainer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handleCopy();
+      }
+    });
+  }
+</script>

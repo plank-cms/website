@@ -66,4 +66,21 @@ const title = "Product";
       ))
     }
   </GridContainer>
+
+  <GridContainer gap="gap-0 mb-16">
+    <div class="col-span-full md:text-center mb-4">
+      <h2 class="font-bold text-3xl uppercase">Add-Ons</h2>
+    </div>
+    {
+      (product.addons ?? []).map((mode, index) => (
+        <div class="col-span-2">
+          <FeatureCard
+            number={String(index + 1).padStart(2, "0")}
+            label={mode.label ?? ""}
+            description={mode.description ?? ""}
+          />
+        </div>
+      ))
+    }
+  </GridContainer>
 </RootLayout>

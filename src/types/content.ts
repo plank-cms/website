@@ -67,6 +67,7 @@ export interface Product {
   description?: string;
   features?: ArrayItem[];
   special_modes?: ArrayItem[];
+  addons?: ArrayItem[];
   status: string;
   author: Author;
   published_at: string;
@@ -126,6 +127,7 @@ export interface Pricing {
   tiers: PricingTier[];
   features: PricingRow[];
   special_modes: PricingRow[];
+  addons: PricingRow[];
   users: PricingRow[];
   status: string;
   author: Author;

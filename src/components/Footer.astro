@@ -1,6 +1,5 @@
 ---
 import type { NavProps } from "@/types";
-import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight } from "@lucide/astro";
 import { getFooterNav } from "@/lib/plank/fetch";
 import { BannerPoweredBy } from "./PoweredBy";
@@ -12,7 +11,7 @@ const nav: NavProps[] = await getFooterNav();
 
 <a href="/">
   <BannerPoweredBy
-    logoSrc="/plank-logo-w.svg"
+    logoSrc="/plank-logo.svg"
     logoAlt="Plank CMS"
     text="Powered by Plank CMS"
     mode="dark"

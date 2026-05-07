@@ -7,16 +7,20 @@ type Props = PricingCardProp;
 const { label, description, price, sufix = "" } = Astro.props as Props;
 ---
 
-<Card class="bg-black h-54 justify-between">
+<Card class="bg-black h-54 justify-between hover:bg-plank group/card">
   <div slot="content">
     <h3 class="text-lg font-bold uppercase mb-2">{label}</h3>
-    <p class="text-muted-foreground">{description}</p>
+    <p class="text-muted-foreground group-hover/card:text-black">
+      {description}
+    </p>
   </div>
   <p slot="footer">
     <span class="text-4xl">
       {price}
       {typeof price === "number" ? " USD" : ""}
     </span>
-    <span class="text-muted-foreground">{sufix}</span>
+    <span class="text-muted-foreground group-hover/card:text-black"
+      >{sufix}</span
+    >
   </p>
 </Card>

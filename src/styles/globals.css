@@ -8,8 +8,8 @@
 @import "@/styles/customs.css";
 
 @theme inline {
-  /* AM */
-  --color-am-y: #ffff00;
+  /* Plank */
+  --color-plank: #682bff;
   --font-google-sans: "Google Sans", sans-serif;
 
   /* Shadcn */

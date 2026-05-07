@@ -19,7 +19,7 @@ const imageClass = dimensions
     : "w-full p-0"
   : "w-full p-0";
 const titleClass = href
-  ? "text-muted-foreground text-xs text-center mt-2 group-hover/tile:underline"
+  ? "text-muted-foreground text-xs text-center mt-2 group-hover/tile:text-plank"
   : "text-muted-foreground text-xs text-center mt-2";
 ---
 
@@ -30,7 +30,7 @@ const titleClass = href
   {title}
   class="group/tile"
 >
-  <Card class="flex justify-center aspect-square">
+  <Card class="flex justify-center aspect-square group-hover/tile:bg-plank">
     <div slot="content">
       <img
         src={logo.url}

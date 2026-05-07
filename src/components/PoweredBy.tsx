@@ -16,7 +16,7 @@ export function BannerPoweredBy({
   return (
     <div
       className={`flex flex-col items-center justify-center gap-4 px-6 py-8 ${
-        isDark ? "bg-neutral-950" : "bg-neutral-100"
+        isDark ? "bg-neutral-950" : "bg-plank"
       }`}
     >
       <p

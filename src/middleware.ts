@@ -11,7 +11,7 @@ const SECURITY_HEADERS: Record<string, string> = {
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://analytics.am25.app https://challenges.cloudflare.com",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob: https://cdn.am25.app",
+    "img-src 'self' data: blob: https://cdn.am25.app https://cdn.plank-cms.com https://plank-cms.com",
     "font-src 'self'",
     "connect-src 'self' https://analytics.am25.app https://challenges.cloudflare.com",
     "frame-src https://challenges.cloudflare.com",

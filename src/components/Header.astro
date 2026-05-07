@@ -6,6 +6,7 @@ import { getMainNav } from "@/lib/plank/fetch";
 import { getGithubStars } from "@/lib/github";
 import { siGithub, siNpm } from "simple-icons";
 import BrandIcon from "./BrandIcon.astro";
+import Button from "./ui/astro/Button.astro";
 
 const mainNav: NavProps[] = await getMainNav();
 const githubStars = await getGithubStars();
@@ -78,11 +79,9 @@ const starsLabel =
             </a>
           )
         }
-        <a
-          href="/start"
-          class="bg-plank text-black text-sm uppercase px-3 py-0.5 rounded-full border border-plank hover:bg-transparent hover:text-plank"
-          >Get Started</a
-        >
+        <a href="/start">
+          <Button variant="plank" size="xs">Get Started</Button>
+        </a>
       </div>
     </div>
 

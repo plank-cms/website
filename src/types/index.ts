@@ -1,5 +1,6 @@
 import type { SimpleIcon } from "simple-icons";
 import type { CustomIcon } from "@/icons/custom";
+import type { PlankMedia } from "@plank-cms/client";
 
 export type BrandIconData = SimpleIcon | CustomIcon;
 
@@ -54,7 +55,7 @@ export interface BrandIconProps {
 }
 
 export interface LogoTileProps {
-  logo: string;
+  logo: PlankMedia;
   title: string;
   href?: string;
 }

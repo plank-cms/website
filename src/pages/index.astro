@@ -1,7 +1,26 @@
 ---
 export const prerender = true;
 
+import FeaturedClients from "@/components/home/FeaturedClients.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
+import { getHome } from "@/lib/plank/fetch";
+import type { LogoTileProps } from "@/types";
+
+const home = await getHome();
+
+const featuredClients: LogoTileProps[] = (home.feat_clients ?? []).flatMap(
+  (client) => {
+    if (!client.logo || !client.title) return [];
+
+    return [
+      {
+        logo: client.logo,
+        title: client.title,
+        href: client.href,
+      },
+    ];
+  },
+);
 ---
 
 <RootLayout
@@ -9,4 +28,6 @@ import RootLayout from "@/layouts/RootLayout.astro";
   description="A self-hosted headless CMS you can deploy in minutes"
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com"
-/>
+>
+  <FeaturedClients clients={featuredClients} />
+</RootLayout>

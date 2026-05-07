@@ -4,9 +4,23 @@ import type { LogoTileProps } from "@/types";
 
 type Props = LogoTileProps;
 
-const { logo, title, href } = Astro.props;
+const { logo, title, href } = Astro.props as Props;
 const Tag = href ? "a" : "div";
 const isExternal = href?.startsWith("https");
+const dimensions =
+  typeof logo.width === "number" && typeof logo.height === "number"
+    ? { width: logo.width, height: logo.height }
+    : null;
+const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
+const isSquareish = aspectRatio >= 0.85 && aspectRatio <= 1.15;
+const imageClass = dimensions
+  ? isSquareish
+    ? "w-full p-4"
+    : "w-full p-0"
+  : "w-full p-0";
+const titleClass = href
+  ? "text-muted-foreground text-xs text-center mt-2 group-hover/tile:underline"
+  : "text-muted-foreground text-xs text-center mt-2";
 ---
 
 <Tag
@@ -18,12 +32,45 @@ const isExternal = href?.startsWith("https");
 >
   <Card class="flex justify-center aspect-square">
     <div slot="content">
-      <img src={logo} alt={title} class="w-full p-4" />
+      <img
+        src={logo.url}
+        alt={title}
+        width={logo.width ?? undefined}
+        height={logo.height ?? undefined}
+        class={imageClass}
+        data-logo-tile-image
+      />
     </div>
   </Card>
-  <p
-    class="text-muted-foreground text-xs text-center mt-2 group-hover/tile:underline"
-  >
+  <p class={titleClass}>
     {title}
   </p>
 </Tag>
+
+<script>
+  const SQUAREISH_MIN = 0.85;
+  const SQUAREISH_MAX = 1.15;
+
+  const updateImagePadding = (img: HTMLImageElement) => {
+    if (!img.naturalWidth || !img.naturalHeight) return;
+
+    const aspectRatio = img.naturalWidth / img.naturalHeight;
+    const isSquareish =
+      aspectRatio >= SQUAREISH_MIN && aspectRatio <= SQUAREISH_MAX;
+
+    img.classList.toggle("p-4", isSquareish);
+    img.classList.toggle("p-0", !isSquareish);
+  };
+
+  for (const img of document.querySelectorAll<HTMLImageElement>(
+    "[data-logo-tile-image]",
+  )) {
+    if (img.complete) {
+      updateImagePadding(img);
+    } else {
+      img.addEventListener("load", () => updateImagePadding(img), {
+        once: true,
+      });
+    }
+  }
+</script>

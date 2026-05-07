@@ -1,3 +1,5 @@
+import type { PlankMedia } from "@plank-cms/client";
+
 export interface Author {
   first_name: string;
   last_name: string;
@@ -18,6 +20,12 @@ export interface NavigationItem {
 export interface ArrayItem {
   label?: string;
   description?: string;
+  href?: string;
+}
+
+export interface ClientsItem {
+  logo?: PlankMedia;
+  title?: string;
   href?: string;
 }
 
@@ -54,11 +62,7 @@ export type PricingPriceValue =
 
 export interface Home {
   id: string;
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
+  feat_clients: ClientsItem[];
 }
 
 export interface Product {
@@ -68,11 +72,6 @@ export interface Product {
   features?: ArrayItem[];
   special_modes?: ArrayItem[];
   addons?: ArrayItem[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface WhyPlank {
@@ -81,32 +80,12 @@ export interface WhyPlank {
   description?: string;
   use_cases?: ArrayItem[];
   target?: ArrayItem[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface TrustedBy {
-  id: string;
-  clients?: TrustedByItem[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface LegalPage {
   id: string;
   content: string;
   date?: string;
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface PricingTier {
@@ -126,24 +105,16 @@ export interface Pricing {
   id: string;
   tiers: PricingTier[];
   features: PricingRow[];
+  plank_forge: PricingRow[];
   special_modes: PricingRow[];
   addons: PricingRow[];
   users: PricingRow[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface Navigation {
   id: string;
   main_nav?: NavigationItem[];
   footer_nav?: NavigationItem[];
-  status: string;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface GetStarted {
@@ -152,9 +123,4 @@ export interface GetStarted {
   description?: string;
   command?: string;
   cta?: ArrayItem[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }

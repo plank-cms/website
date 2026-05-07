@@ -9,14 +9,13 @@ const year = new Date().getFullYear();
 const nav: NavProps[] = await getFooterNav();
 ---
 
-<a href="/">
-  <BannerPoweredBy
-    logoSrc="/plank-logo.svg"
-    logoAlt="Plank CMS"
-    text="Powered by Plank CMS"
-    mode="dark"
-  />
-</a>
+<BannerPoweredBy
+  logoSrc="/plank-logo.svg"
+  logoAlt="Plank CMS"
+  label="Made with Plank CMS"
+  mode="dark"
+/>
+
 <footer class="max-w-7xl mx-auto w-full px-4 py-8">
   <div
     class="flex flex-col-reverse md:flex-row gap-4 md:items-center justify-between text-neutral-500 text-xs uppercase"

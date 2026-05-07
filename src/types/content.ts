@@ -9,8 +9,13 @@ export interface Author {
   country: string | null;
 }
 
-// Items
+export interface LegalPage {
+  id: string;
+  content: string;
+  date?: string;
+}
 
+// Items
 export interface NavigationItem {
   label: string;
   href: string;
@@ -32,6 +37,12 @@ export interface ClientsItem {
 export interface TrustedByItem {
   logo?: string;
   label?: string;
+}
+
+export interface CtaItem {
+  label?: string;
+  href?: string;
+  feat: boolean;
 }
 
 export type PricingValue =
@@ -59,9 +70,17 @@ export type PricingPriceValue =
     };
 
 // Single Types
+export interface Navigation {
+  id: string;
+  main_nav?: NavigationItem[];
+  footer_nav?: NavigationItem[];
+}
 
 export interface Home {
   id: string;
+  title?: string;
+  description?: string;
+  cta?: CtaItem[];
   feat_clients: ClientsItem[];
 }
 
@@ -80,12 +99,6 @@ export interface WhyPlank {
   description?: string;
   use_cases?: ArrayItem[];
   target?: ArrayItem[];
-}
-
-export interface LegalPage {
-  id: string;
-  content: string;
-  date?: string;
 }
 
 export interface PricingTier {
@@ -109,12 +122,6 @@ export interface Pricing {
   special_modes: PricingRow[];
   addons: PricingRow[];
   users: PricingRow[];
-}
-
-export interface Navigation {
-  id: string;
-  main_nav?: NavigationItem[];
-  footer_nav?: NavigationItem[];
 }
 
 export interface GetStarted {

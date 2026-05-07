@@ -1,0 +1,45 @@
+---
+import { ProseRenderer } from "@/components/ProseRenderer";
+import GridContainer from "@/layouts/GridContainer.astro";
+import Button from "@/components/ui/astro/Button.astro";
+import type { Home } from "@/types/content";
+
+type Props = Pick<Home, "title" | "description" | "cta">;
+
+const { title, description, cta } = Astro.props as Props;
+---
+
+<GridContainer class="md:items-center min-h-dvh mt-4 md:-mt-32">
+  <div class="col-span-full">
+    <div
+      class="w-full flex flex-col items-center justify-center gap-8 max-w-4xl mx-auto"
+    >
+      <h2
+        class="font-bold text-6xl md:text-7xl xl:text-8xl md:text-center uppercase"
+      >
+        {title}
+      </h2>
+      <div class="text-muted-foreground md:text-xl">
+        <ProseRenderer content={description ?? ""} />
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row w-full md:w-auto gap-4 md:justify-center"
+      >
+        {
+          cta?.map((item) => (
+            <a href={item.href} class="w-full md:w-auto">
+              <Button
+                variant={item.feat ? "plank" : "outline"}
+                size="lg"
+                class="w-full md:w-auto uppercase"
+              >
+                {item.label}
+              </Button>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</GridContainer>

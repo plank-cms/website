@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import FeaturedClients from "@/components/home/FeaturedClients.astro";
+import Hero from "@/components/home/Hero.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 import { getHome } from "@/lib/plank/fetch";
 import type { LogoTileProps } from "@/types";
@@ -29,5 +30,6 @@ const featuredClients: LogoTileProps[] = (home.feat_clients ?? []).flatMap(
   image="https://plank-cms.com/og-image.png"
   url="https://plank-cms.com"
 >
+  <Hero title={home.title} description={home.description} cta={home.cta} />
   <FeaturedClients clients={featuredClients} />
 </RootLayout>

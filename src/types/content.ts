@@ -129,5 +129,6 @@ export interface GetStarted {
   title?: string;
   description?: string;
   command?: string;
+  requirements?: string;
   cta?: ArrayItem[];
 }

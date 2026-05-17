@@ -91,6 +91,7 @@ export interface Product {
   features?: ArrayItem[];
   special_modes?: ArrayItem[];
   addons?: ArrayItem[];
+  sdk?: ArrayItem[];
 }
 
 export interface WhyPlank {
